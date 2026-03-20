@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import type { TodoStore } from '@/types';
 import { dateToKey } from '@/utils/date';
 
@@ -7,7 +6,7 @@ interface TodayStatsProps {
   store: TodoStore;
 }
 
-const TodayStats = memo(({ today, store }: TodayStatsProps) => {
+const TodayStats = ({ today, store }: TodayStatsProps) => {
   const todos = store[dateToKey(today)] ?? [];
   const total = todos.length;
   const done = todos.filter((t) => t.done).length;
@@ -42,6 +41,6 @@ const TodayStats = memo(({ today, store }: TodayStatsProps) => {
       </div>
     </aside>
   );
-});
+};
 
 export default TodayStats;

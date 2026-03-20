@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import type { Todo } from '@/types';
 import TodoItem from '@/components/Todo/TodoItem';
 
@@ -8,7 +7,7 @@ interface TodoListProps {
   onDelete: (id: number) => void;
 }
 
-const TodoList = memo(({ todos, onToggle, onDelete }: TodoListProps) => {
+const TodoList = ({ todos, onToggle, onDelete }: TodoListProps) => {
   return (
     <div className="flex-1 overflow-y-auto pr-1 scrollbar-app">
       <ul className="list-none flex flex-col gap-2" aria-live="polite" aria-label="할 일 목록">
@@ -19,6 +18,6 @@ const TodoList = memo(({ todos, onToggle, onDelete }: TodoListProps) => {
       {todos.length === 0 && <p className="text-center text-muted text-sm py-9">할 일이 없어요</p>}
     </div>
   );
-});
+};
 
 export default TodoList;

@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import type { Todo } from '@/types';
 import { formatDateTitle } from '@/utils/date';
 import TodoList from '@/components/Todo/TodoList';
@@ -12,8 +12,8 @@ interface TodoSectionProps {
   onDelete: (date: Date, id: number) => void;
 }
 
-const TodoSection = memo(({ selectedDate, todos, onAdd, onToggle, onDelete }: TodoSectionProps) => {
-  const handleAdd = useCallback((text: string) => onAdd(selectedDate, text), [onAdd, selectedDate]);
+const TodoSection = ({ selectedDate, todos, onAdd, onToggle, onDelete }: TodoSectionProps) => {
+  const handleAdd = (text: string) => onAdd(selectedDate, text);
   const handleToggle = useCallback(
     (id: number) => onToggle(selectedDate, id),
     [onToggle, selectedDate]
@@ -35,6 +35,6 @@ const TodoSection = memo(({ selectedDate, todos, onAdd, onToggle, onDelete }: To
       <TodoInputArea onAdd={handleAdd} />
     </section>
   );
-});
+};
 
 export default TodoSection;
