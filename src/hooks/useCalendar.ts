@@ -1,11 +1,10 @@
 import { useState, useCallback } from 'react';
 
-const today = new Date();
-
 export const useCalendar = () => {
-  const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  const [currentMonth, setCurrentMonth] = useState(today.getMonth());
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date(today));
+  const [today] = useState(() => new Date());
+  const [currentYear, setCurrentYear] = useState(() => today.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(() => today.getMonth());
+  const [selectedDate, setSelectedDate] = useState<Date>(() => new Date(today));
 
   const goPrevMonth = useCallback(() => {
     setCurrentMonth((m) => {
