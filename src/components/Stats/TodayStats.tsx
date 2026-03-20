@@ -14,7 +14,7 @@ const TodayStats = ({ today, store }: TodayStatsProps) => {
 
   return (
     <aside
-      className="mt-5 py-3.5 px-4 bg-surface border border-border-soft rounded-md flex flex-col gap-2.5 max-cal:mt-3 max-cal:mr-1.5"
+      className="mt-5 py-3.5 px-4 bg-surface border border-line-soft rounded-md flex flex-col gap-2.5 max-cal:mt-3 max-cal:mr-1.5"
       role="region"
       aria-label="오늘 통계"
     >
@@ -27,7 +27,7 @@ const TodayStats = ({ today, store }: TodayStatsProps) => {
         </span>
       </div>
       <div
-        className="w-full h-1.5 bg-border-soft rounded-full overflow-hidden"
+        className="w-full h-1.5 bg-line-soft rounded-full overflow-hidden"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={100}

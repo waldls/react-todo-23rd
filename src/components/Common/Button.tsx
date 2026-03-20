@@ -15,8 +15,8 @@ const variantClass: Record<Variant, string> = {
 };
 
 const sizeClass: Record<Size, string> = {
-  sm: 'text-xs font-medium py-1 px-2.5 rounded-sm',
-  md: 'text-md font-semibold py-2.5 px-5 rounded-md',
+  sm: 'font-caption py-1 px-2.5 rounded-sm',
+  md: 'font-body-1 py-2.5 px-5 rounded-md',
 };
 
 const Button = ({ variant, size = 'sm', children, ...props }: ButtonProps) => (

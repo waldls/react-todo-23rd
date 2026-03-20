@@ -47,7 +47,7 @@ const CalendarGrid = ({
     <>
       <div className="grid grid-cols-7 text-center" role="row">
         {WEEKDAYS.map((day) => (
-          <span key={day} className="text-sm font-medium text-muted py-1.5">
+          <span key={day} className="font-caption text-muted py-1.5">
             {day}
           </span>
         ))}

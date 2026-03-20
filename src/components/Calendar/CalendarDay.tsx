@@ -22,7 +22,7 @@ const CalendarDay = memo(
           ? 'text-muted'
           : 'text-primary';
     const fontClass = isSelected || isToday ? 'font-semibold' : isOtherMonth ? 'font-light' : '';
-    const hoverClass = isSelected ? '' : 'hover:bg-border-soft';
+    const hoverClass = isSelected ? '' : 'hover:bg-line-soft';
 
     return (
       <button

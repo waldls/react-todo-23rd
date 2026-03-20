@@ -7,9 +7,9 @@
   --color-surface: #f7fafd;
   --color-surface-alt: #e8f1f8;
 
-  /* border color */
-  --color-border: #c8daea;
-  --color-border-soft: #daeaf5;
+  /* border line color */
+  --color-line: #c8daea;
+  --color-line-soft: #daeaf5;
 
   /* text color */
   --color-primary: #1e3040;
@@ -34,7 +34,7 @@
   --shadow-card: 0 2px 16px rgba(58, 100, 140, 0.08);
   --shadow-inset: inset 0 1px 3px rgba(58, 100, 140, 0.07);
 
-  /* font */
+  /* font family */
   --font-sans: 'Pretendard', sans-serif;
 
   /* font size */
@@ -65,7 +65,7 @@
 
 @utility scrollbar-app {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: var(--color-line) transparent;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -73,7 +73,7 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--color-border);
+    background: var(--color-line);
     border-radius: 99px;
   }
 }
@@ -84,4 +84,27 @@
 
 @utility transition-border-color {
   transition: border-color 0.15s;
+}
+
+@layer utilities {
+  .font-title-1 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--tracking-title);
+  }
+  .font-title-2 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+  .font-body-1 {
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-semibold);
+  }
+  .font-body-2 {
+    font-size: var(--text-sm);
+  }
+  .font-caption {
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-medium);
+  }
 }
