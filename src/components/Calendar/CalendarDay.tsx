@@ -21,12 +21,11 @@ const CalendarDay = memo(
         : isOtherMonth
           ? 'text-muted'
           : 'text-primary';
-    const fontClass = isSelected || isToday ? 'font-semibold' : isOtherMonth ? 'font-light' : '';
     const hoverClass = isSelected ? '' : 'hover:bg-line-soft';
 
     return (
       <button
-        className={`relative w-full cursor-pointer border-0 font-sans text-md py-2.25 px-0.5 rounded-sm text-center max-cal:py-1.5 max-cal:text-sm ${bgClass} ${textClass} ${fontClass} ${hoverClass}`}
+        className={`relative w-full cursor-pointer border-0 font-body-1 py-2.25 px-0.5 rounded-sm text-center max-cal:py-1.5 max-cal:font-body-2 ${bgClass} ${textClass} ${hoverClass}`}
         onClick={handleClick}
       >
         {date.getDate()}

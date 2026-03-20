@@ -14,15 +14,15 @@ const TodayStats = ({ today, store }: TodayStatsProps) => {
 
   return (
     <aside
-      className="mt-5 py-3.5 px-4 bg-surface border border-line-soft rounded-md flex flex-col gap-2.5 max-cal:mt-3 max-cal:mr-1.5"
+      className="py-3.5 px-4 bg-surface border border-line-soft rounded-md flex flex-col gap-2.5 max-cal:mr-1.5"
       role="region"
       aria-label="오늘 통계"
     >
       <div className="flex justify-between items-center">
-        <p className="text-sm text-secondary" aria-live="polite">
+        <p className="font-body-2 text-secondary" aria-live="polite">
           {total === 0 ? '오늘 할 일이 없어요' : `오늘 ${done} / ${total}개 완료`}
         </p>
-        <span className="text-sm font-semibold text-blue" aria-live="polite">
+        <span className="font-body-2 text-blue" aria-live="polite">
           {total > 0 ? `${percent}%` : ''}
         </span>
       </div>

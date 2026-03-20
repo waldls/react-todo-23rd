@@ -30,7 +30,7 @@ const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
         placeholder="할 일을 입력하세요"
         autoComplete="off"
         aria-label="할 일 입력"
-        className="flex-1 border-1.5 border-line rounded-md bg-surface-alt shadow-inset font-sans text-md text-primary px-3.5 py-2.5 outline-none transition-border-color focus:border-blue placeholder:text-muted"
+        className="flex-1 border-1.5 border-line rounded-md bg-surface-alt shadow-inset font-body-1 text-primary px-3.5 py-2.5 outline-none transition-border-color focus:border-blue placeholder:text-muted"
         onKeyDown={handleKeyDown}
       />
       <Button variant="blue" size="md" onClick={handleAdd}>

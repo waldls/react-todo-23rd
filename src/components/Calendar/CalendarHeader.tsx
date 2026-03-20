@@ -8,7 +8,7 @@ interface CalendarHeaderProps {
 }
 
 const btnClass =
-  'bg-transparent border-0 cursor-pointer text-secondary text-xs px-2.25 py-1.5 rounded-sm hover:bg-line-soft';
+  'bg-transparent border-0 cursor-pointer text-secondary font-caption px-2.25 py-1.5 rounded-sm hover:bg-line-soft';
 
 const CalendarHeader = memo(
   ({ currentYear, currentMonth, onPrevMonth, onNextMonth }: CalendarHeaderProps) => {

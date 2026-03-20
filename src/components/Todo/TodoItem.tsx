@@ -17,7 +17,7 @@ const TodoItem = memo(({ todo, onToggle, onDelete }: TodoItemProps) => {
       className={`flex items-center justify-between gap-3 py-2.75 px-3.5 bg-surface-alt border border-line-soft rounded-md ${todo.done ? 'opacity-50' : ''}`}
     >
       <p
-        className={`flex-1 text-md leading-normal break-all ${todo.done ? 'line-through text-muted' : 'text-primary'}`}
+        className={`flex-1 font-body-1 leading-normal break-all ${todo.done ? 'line-through text-muted' : 'text-primary'}`}
       >
         {todo.text}
       </p>
