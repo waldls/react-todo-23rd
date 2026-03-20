@@ -1,0 +1,54 @@
+import type { TodoStore } from '@/types';
+import { dateToKey } from '@/utils/date';
+
+interface MonthStatsProps {
+  currentYear: number;
+  currentMonth: number;
+  store: TodoStore;
+}
+
+const MonthStats = ({ currentYear, currentMonth, store }: MonthStatsProps) => {
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  let total = 0;
+  let done = 0;
+
+  for (let i = 1; i <= daysInMonth; i++) {
+    const todos = store[dateToKey(new Date(currentYear, currentMonth, i))] ?? [];
+    total += todos.length;
+    done += todos.filter((t) => t.done).length;
+  }
+
+  const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+
+  return (
+    <aside
+      className="mt-3 py-3.5 px-4 bg-surface border border-border-soft rounded-md flex flex-col gap-2.5 max-cal:mt-3 max-cal:ml-1.5"
+      role="region"
+      aria-label="이번 달 통계"
+    >
+      <div className="flex justify-between items-center">
+        <p className="text-sm text-secondary" aria-live="polite">
+          {total === 0 ? '이번 달 할 일이 없어요' : `이번 달 ${done} / ${total}개 완료`}
+        </p>
+        <span className="text-sm font-semibold text-blue" aria-live="polite">
+          {total > 0 ? `${percent}%` : ''}
+        </span>
+      </div>
+      <div
+        className="w-full h-1.5 bg-border-soft rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={percent}
+        aria-label="이번 달 완료율"
+      >
+        <div
+          className="h-full bg-blue rounded-full transition-width"
+          style={{ width: `${percent}%` }}
+        />
+      </div>
+    </aside>
+  );
+};
+
+export default MonthStats;

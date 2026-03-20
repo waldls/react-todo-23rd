@@ -1,5 +1,5 @@
-const App = () => {
-  return <div>Todo App</div>;
-};
+import TodoPage from '@/pages/TodoPage';
+
+const App = () => <TodoPage />;
 
 export default App;
