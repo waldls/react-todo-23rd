@@ -8,18 +8,18 @@ interface TodoSectionProps {
   selectedDate: Date;
   todos: Todo[];
   onAdd: (date: Date, text: string) => void;
-  onToggle: (date: Date, id: number) => void;
-  onDelete: (date: Date, id: number) => void;
+  onToggle: (date: Date, id: string) => void;
+  onDelete: (date: Date, id: string) => void;
 }
 
 const TodoSection = ({ selectedDate, todos, onAdd, onToggle, onDelete }: TodoSectionProps) => {
   const handleAdd = useCallback((text: string) => onAdd(selectedDate, text), [onAdd, selectedDate]);
   const handleToggle = useCallback(
-    (id: number) => onToggle(selectedDate, id),
+    (id: string) => onToggle(selectedDate, id),
     [onToggle, selectedDate]
   );
   const handleDelete = useCallback(
-    (id: number) => onDelete(selectedDate, id),
+    (id: string) => onDelete(selectedDate, id),
     [onDelete, selectedDate]
   );
 
