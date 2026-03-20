@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from '@/components/Common/Button';
 
 interface TodoInputAreaProps {
   onAdd: (text: string) => void;
@@ -30,12 +31,9 @@ const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
         className="flex-1 border-1.5 border-border rounded-md bg-surface-alt shadow-inset font-sans text-md text-primary px-3.5 py-2.5 outline-none transition-border-color focus:border-blue placeholder:text-muted"
         onKeyDown={handleKeyDown}
       />
-      <button
-        className="border border-blue bg-blue-soft text-blue text-md font-semibold py-2.5 px-5 rounded-md cursor-pointer font-sans"
-        onClick={handleAdd}
-      >
+      <Button variant="blue" size="md" onClick={handleAdd}>
         추가
-      </button>
+      </Button>
     </div>
   );
 };
