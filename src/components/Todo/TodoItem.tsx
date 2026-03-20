@@ -4,8 +4,8 @@ import Button from '@/components/Common/Button';
 
 interface TodoItemProps {
   todo: Todo;
-  onToggle: (id: number) => void;
-  onDelete: (id: number) => void;
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 const TodoItem = memo(({ todo, onToggle, onDelete }: TodoItemProps) => {
