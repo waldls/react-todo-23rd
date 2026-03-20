@@ -27,7 +27,7 @@ const CalendarSection = ({
 }: CalendarSectionProps) => {
   return (
     <section
-      className="w-105 shrink-0 flex flex-col gap-5 border-r-1.5 border-line p-7 bg-surface-alt overflow-y-auto max-cal:w-full max-cal:shrink-0 max-cal:border-r-0 max-cal:border-b-1.5 max-cal:p-4 max-cal:grid max-cal:grid-cols-2 max-cal:gap-3"
+      className="w-105 shrink-0 flex flex-col gap-5 border-r-1.5 border-line p-7 bg-surface-alt overflow-y-auto max-cal:w-full max-cal:border-r-0 max-cal:border-b-1.5 max-cal:p-4 max-cal:grid max-cal:grid-cols-2 max-cal:gap-3"
       role="region"
       aria-labelledby="calendarTitle"
     >

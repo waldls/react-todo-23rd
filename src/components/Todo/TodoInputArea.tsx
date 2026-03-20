@@ -1,11 +1,11 @@
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import Button from '@/components/Common/Button';
 
 interface TodoInputAreaProps {
   onAdd: (text: string) => void;
 }
 
-const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
+const TodoInputArea = memo(({ onAdd }: TodoInputAreaProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleAdd = () => {
@@ -38,6 +38,6 @@ const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
       </Button>
     </div>
   );
-};
+});
 
 export default TodoInputArea;

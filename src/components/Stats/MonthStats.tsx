@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import type { TodoStore } from '@/types/todo';
 import { dateToKey } from '@/utils/date';
 
@@ -7,16 +8,18 @@ interface MonthStatsProps {
   store: TodoStore;
 }
 
-const MonthStats = ({ currentYear, currentMonth, store }: MonthStatsProps) => {
-  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-  let total = 0;
-  let done = 0;
-
-  for (let i = 1; i <= daysInMonth; i++) {
-    const todos = store[dateToKey(new Date(currentYear, currentMonth, i))] ?? [];
-    total += todos.length;
-    done += todos.filter((t) => t.done).length;
-  }
+const MonthStats = memo(({ currentYear, currentMonth, store }: MonthStatsProps) => {
+  const { total, done } = useMemo(() => {
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+    let total = 0;
+    let done = 0;
+    for (let i = 1; i <= daysInMonth; i++) {
+      const todos = store[dateToKey(new Date(currentYear, currentMonth, i))] ?? [];
+      total += todos.length;
+      done += todos.filter((t) => t.done).length;
+    }
+    return { total, done };
+  }, [store, currentYear, currentMonth]);
 
   const percent = total === 0 ? 0 : Math.round((done / total) * 100);
 
@@ -49,6 +52,6 @@ const MonthStats = ({ currentYear, currentMonth, store }: MonthStatsProps) => {
       </div>
     </aside>
   );
-};
+});
 
 export default MonthStats;

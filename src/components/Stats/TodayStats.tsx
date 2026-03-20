@@ -1,3 +1,4 @@
+import { memo, useMemo } from 'react';
 import type { TodoStore } from '@/types/todo';
 import { dateToKey } from '@/utils/date';
 
@@ -6,10 +7,11 @@ interface TodayStatsProps {
   store: TodoStore;
 }
 
-const TodayStats = ({ today, store }: TodayStatsProps) => {
-  const todos = store[dateToKey(today)] ?? [];
-  const total = todos.length;
-  const done = todos.filter((t) => t.done).length;
+const TodayStats = memo(({ today, store }: TodayStatsProps) => {
+  const { total, done } = useMemo(() => {
+    const todos = store[dateToKey(today)] ?? [];
+    return { total: todos.length, done: todos.filter((t) => t.done).length };
+  }, [store, today]);
   const percent = total === 0 ? 0 : Math.round((done / total) * 100);
 
   return (
@@ -41,6 +43,6 @@ const TodayStats = ({ today, store }: TodayStatsProps) => {
       </div>
     </aside>
   );
-};
+});
 
 export default TodayStats;

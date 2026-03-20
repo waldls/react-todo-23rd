@@ -44,7 +44,7 @@ const CalendarGrid = ({
   }, [currentYear, currentMonth]);
 
   return (
-    <>
+    <div>
       <div className="grid grid-cols-7 text-center" role="row">
         {WEEKDAYS.map((day) => (
           <span key={day} className="font-caption text-muted py-1.5">
@@ -65,7 +65,7 @@ const CalendarGrid = ({
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

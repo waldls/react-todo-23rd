@@ -13,7 +13,7 @@ interface TodoSectionProps {
 }
 
 const TodoSection = ({ selectedDate, todos, onAdd, onToggle, onDelete }: TodoSectionProps) => {
-  const handleAdd = (text: string) => onAdd(selectedDate, text);
+  const handleAdd = useCallback((text: string) => onAdd(selectedDate, text), [onAdd, selectedDate]);
   const handleToggle = useCallback(
     (id: number) => onToggle(selectedDate, id),
     [onToggle, selectedDate]
