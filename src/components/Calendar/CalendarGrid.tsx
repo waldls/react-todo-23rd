@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { TodoStore } from '@/types';
+import type { TodoStore } from '@/types/todo';
 import { dateToKey, isSameDate } from '@/utils/date';
 import CalendarDay from '@/components/Calendar/CalendarDay';
 import { WEEKDAYS } from '@/constants/date';

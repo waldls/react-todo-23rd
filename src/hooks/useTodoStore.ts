@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { TodoStore } from '@/types';
+import type { TodoStore } from '@/types/todo';
 import { dateToKey } from '@/utils/date';
 
 const loadStore = (): TodoStore => {

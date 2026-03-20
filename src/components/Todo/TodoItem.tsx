@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import type { Todo } from '@/types';
+import type { Todo } from '@/types/todo';
 import Button from '@/components/Common/Button';
 
 interface TodoItemProps {

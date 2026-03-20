@@ -1,4 +1,4 @@
-import type { TodoStore } from '@/types';
+import type { TodoStore } from '@/types/todo';
 import { dateToKey } from '@/utils/date';
 
 interface MonthStatsProps {

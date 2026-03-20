@@ -1,4 +1,4 @@
-import type { TodoStore } from '@/types';
+import type { TodoStore } from '@/types/todo';
 import TodayStats from '@/components/Stats/TodayStats';
 import MonthStats from '@/components/Stats/MonthStats';
 import CalendarHeader from '@/components/Calendar/CalendarHeader';

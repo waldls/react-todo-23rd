@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import type { Todo } from '@/types';
+import type { Todo } from '@/types/todo';
 import { formatDateTitle } from '@/utils/date';
 import TodoList from '@/components/Todo/TodoList';
 import TodoInputArea from '@/components/Todo/TodoInputArea';
