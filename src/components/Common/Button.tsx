@@ -22,7 +22,7 @@ const sizeClass: Record<Size, string> = {
 const Button = ({ variant, size = 'sm', children, ...props }: ButtonProps) => (
   <button
     {...props}
-    className={`border font-sans cursor-pointer whitespace-nowrap ${variantClass[variant]} ${sizeClass[size]}`}
+    className={`border cursor-pointer whitespace-nowrap ${variantClass[variant]} ${sizeClass[size]}`}
   >
     {children}
   </button>
