@@ -16,7 +16,7 @@ const TodoList = ({ todos, onToggle, onDelete }: TodoListProps) => {
         ))}
       </ul>
       {todos.length === 0 && (
-        <p className="text-center text-muted font-body-2 py-9">할 일이 없어요</p>
+        <p className="text-center text-muted font-body-1 py-9">할 일이 없어요</p>
       )}
     </div>
   );
