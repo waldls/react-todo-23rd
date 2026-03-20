@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { TodoStore } from '@/types';
 import { dateToKey } from '@/utils/date';
 
@@ -7,7 +8,7 @@ interface MonthStatsProps {
   store: TodoStore;
 }
 
-const MonthStats = ({ currentYear, currentMonth, store }: MonthStatsProps) => {
+const MonthStats = memo(({ currentYear, currentMonth, store }: MonthStatsProps) => {
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
   let total = 0;
   let done = 0;
@@ -49,6 +50,6 @@ const MonthStats = ({ currentYear, currentMonth, store }: MonthStatsProps) => {
       </div>
     </aside>
   );
-};
+});
 
 export default MonthStats;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import type { TodoStore } from '@/types';
 import { dateToKey } from '@/utils/date';
 
@@ -18,44 +18,52 @@ const persistStore = (store: TodoStore): void => {
 export const useTodoStore = () => {
   const [store, setStore] = useState<TodoStore>(loadStore);
 
-  const addTodo = (date: Date, text: string) => {
-    const key = dateToKey(date);
+  const updateStore = useCallback((updater: (prev: TodoStore) => TodoStore) => {
     setStore((prev) => {
-      const next = {
+      const next = updater(prev);
+      persistStore(next);
+      return next;
+    });
+  }, []);
+
+  const addTodo = useCallback(
+    (date: Date, text: string) => {
+      const key = dateToKey(date);
+      updateStore((prev) => ({
         ...prev,
         [key]: [...(prev[key] ?? []), { id: Date.now(), text: text.trim(), done: false }],
-      };
-      persistStore(next);
-      return next;
-    });
-  };
+      }));
+    },
+    [updateStore]
+  );
 
-  const toggleTodo = (date: Date, id: number) => {
-    const key = dateToKey(date);
-    setStore((prev) => {
-      const next = {
+  const toggleTodo = useCallback(
+    (date: Date, id: number) => {
+      const key = dateToKey(date);
+      updateStore((prev) => ({
         ...prev,
         [key]: (prev[key] ?? []).map((t) => (t.id === id ? { ...t, done: !t.done } : t)),
-      };
-      persistStore(next);
-      return next;
-    });
-  };
+      }));
+    },
+    [updateStore]
+  );
 
-  const deleteTodo = (date: Date, id: number) => {
-    const key = dateToKey(date);
-    setStore((prev) => {
-      const updated = (prev[key] ?? []).filter((t) => t.id !== id);
-      const next = { ...prev };
-      if (updated.length === 0) {
-        delete next[key];
-      } else {
-        next[key] = updated;
-      }
-      persistStore(next);
-      return next;
-    });
-  };
+  const deleteTodo = useCallback(
+    (date: Date, id: number) => {
+      const key = dateToKey(date);
+      updateStore((prev) => {
+        const updated = (prev[key] ?? []).filter((t) => t.id !== id);
+        const next = { ...prev };
+        if (updated.length === 0) {
+          delete next[key];
+        } else {
+          next[key] = updated;
+        }
+        return next;
+      });
+    },
+    [updateStore]
+  );
 
   return { store, addTodo, toggleTodo, deleteTodo };
 };

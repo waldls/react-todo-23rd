@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { ButtonHTMLAttributes } from 'react';
 
 type Variant = 'green' | 'red' | 'blue';
@@ -19,13 +20,13 @@ const sizeClass: Record<Size, string> = {
   md: 'text-md font-semibold py-2.5 px-5 rounded-md',
 };
 
-const Button = ({ variant, size = 'sm', children, ...props }: ButtonProps) => (
+const Button = memo(({ variant, size = 'sm', children, ...props }: ButtonProps) => (
   <button
     {...props}
     className={`border font-sans cursor-pointer whitespace-nowrap ${variantClass[variant]} ${sizeClass[size]}`}
   >
     {children}
   </button>
-);
+));
 
 export default Button;

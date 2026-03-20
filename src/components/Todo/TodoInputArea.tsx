@@ -1,30 +1,32 @@
-import { useState } from 'react';
+import { memo, useRef } from 'react';
 import Button from '@/components/Common/Button';
 
 interface TodoInputAreaProps {
   onAdd: (text: string) => void;
 }
 
-const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
-  const [value, setValue] = useState('');
+const TodoInputArea = memo(({ onAdd }: TodoInputAreaProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleAdd = () => {
-    const text = value.trim();
+    const text = inputRef.current?.value.trim() ?? '';
     if (!text) return;
     onAdd(text);
-    setValue('');
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') handleAdd();
+    if (e.key === 'Enter' && !e.nativeEvent.isComposing) handleAdd();
   };
 
   return (
     <div className="flex gap-2 shrink-0 pt-3 border-t border-border-soft">
       <input
+        ref={inputRef}
         type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
         placeholder="할 일을 입력하세요"
         autoComplete="off"
         aria-label="할 일 입력"
@@ -36,6 +38,6 @@ const TodoInputArea = ({ onAdd }: TodoInputAreaProps) => {
       </Button>
     </div>
   );
-};
+});
 
 export default TodoInputArea;

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTodoStore } from '@/hooks/useTodoStore';
 import { useCalendar } from '@/hooks/useCalendar';
 import { dateToKey } from '@/utils/date';
@@ -9,7 +10,7 @@ const TodoPage = () => {
   const { today, currentYear, currentMonth, selectedDate, goPrevMonth, goNextMonth, selectDate } =
     useCalendar();
 
-  const todos = store[dateToKey(selectedDate)] ?? [];
+  const todos = useMemo(() => store[dateToKey(selectedDate)] ?? [], [store, selectedDate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center py-8 px-6 bg-bg bg-app-gradient font-sans text-primary max-cal:h-screen max-cal:p-0 max-cal:items-stretch">
